@@ -10,7 +10,7 @@ import CategCard from "../../components/common/CategCard";
 
 function CategSection() {
   return (
-    <SectionContainer>
+    <Stack>
       <Stack
         width={"100%"}
         height={{ xs: "1000px", md: "100vh" }}
@@ -54,7 +54,7 @@ function CategSection() {
           </Box>
         </Stack>
       </Stack>
-    </SectionContainer>
+    </Stack>
   );
 }
 

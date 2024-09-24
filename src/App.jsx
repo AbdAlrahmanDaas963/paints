@@ -8,6 +8,8 @@ import Header from "./components/Header";
 import WelcomeSection from "./pages/LandingPage/WelcomeSection";
 import AboutmeSection from "./pages/LandingPage/AboutmeSection";
 import CategSection from "./pages/LandingPage/CategSection";
+import PaintsSections from "./pages/LandingPage/PaintsSections";
+import EventsSection from "./pages/LandingPage/EventsSection";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <WelcomeSection />
         <AboutmeSection />
         <CategSection />
+        <PaintsSections />
+        {/* <EventsSection /> */}
         {/* <Container className="container">
           <div style={{ padding: "20px" }}>
             <h1>Custom MUI Theme Example</h1>

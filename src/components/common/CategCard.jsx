@@ -11,14 +11,14 @@ const CategCard = ({ title, src }) => {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       animate={{
-        height: isHovered ? "300px" : "200px", // Grow taller on hover
-        width: isHovered ? "300px" : "200px", // Keep width fixed to maintain circle-like shape
-        borderRadius: isHovered ? "20px" : "50%", // Change shape from circle to rounded rect
+        height: isHovered ? "300px" : "200px",
+        width: isHovered ? "300px" : "200px",
+        borderRadius: isHovered ? "20px" : "50%",
       }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       style={{
         position: "relative",
-        backgroundColor: theme.palette.fourth.main, // Circle background color
+        backgroundColor: theme.palette.fourth.main,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -26,7 +26,6 @@ const CategCard = ({ title, src }) => {
         overflow: "hidden",
       }}
     >
-      {/* Title */}
       {!isHovered && (
         <motion.div
           initial={{ opacity: 1 }}
@@ -44,7 +43,6 @@ const CategCard = ({ title, src }) => {
         </motion.div>
       )}
 
-      {/* Image */}
       {isHovered && (
         <motion.img
           src={src}
