@@ -30,8 +30,8 @@ function PaintsSections() {
     <Stack
       sx={{
         backgroundColor: theme.palette.primary.main,
-        height: { sm: "200vh", md: "150vh", xs: "300vh" },
-        minHeight: { sm: "1500px", md: "1500px", xs: "2000px" },
+        height: "fit-content",
+        minHeight: { lg: "1800px", md: "2100px", sm: "1500px", xs: "2100px" },
         overflowX: "hidden",
       }}
     >

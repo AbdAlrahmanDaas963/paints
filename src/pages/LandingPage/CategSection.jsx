@@ -5,10 +5,20 @@ import Acrylic from "../../assets/Acrylic.jpg";
 import digital from "../../assets/digital.jpeg";
 import oil from "../../assets/oil.jpg";
 
-import SectionContainer from "../../components/common/SectionContainer";
 import CategCard from "../../components/common/CategCard";
+import { useNavigate } from "react-router-dom";
 
 function CategSection() {
+  const navigate = useNavigate();
+  const categories = [
+    { id: 1, name: "Digital Art", description: "Oil-based paints..." },
+    { id: 2, name: "Oil Painting", description: "Water-based paints..." },
+    { id: 3, name: "Acrylic Art", description: "Fast-drying paints..." },
+  ];
+  const handleCategoryClick = (category) => {
+    navigate("/gallery", { state: { category } });
+  };
+
   return (
     <Stack>
       <Stack
@@ -43,13 +53,22 @@ function CategSection() {
             maxHeight: "700px",
           }}
         >
-          <Box sx={{ width: { xs: "100%", md: "33%" } }}>
+          <Box
+            onClick={() => handleCategoryClick(categories[0])}
+            sx={{ width: { xs: "100%", md: "33%" } }}
+          >
             <CategCard title={"Digital Art"} src={digital} />
           </Box>
-          <Box sx={{ width: { xs: "100%", md: "33%" } }}>
+          <Box
+            onClick={() => handleCategoryClick(categories[1])}
+            sx={{ width: { xs: "100%", md: "33%" } }}
+          >
             <CategCard title={"Oil Painting"} src={oil} />
           </Box>
-          <Box sx={{ width: { xs: "100%", md: "33%" } }}>
+          <Box
+            onClick={() => handleCategoryClick(categories[2])}
+            sx={{ width: { xs: "100%", md: "33%" } }}
+          >
             <CategCard title={"Acrylic Art"} src={Acrylic} />
           </Box>
         </Stack>

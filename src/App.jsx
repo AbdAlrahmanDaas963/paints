@@ -10,6 +10,8 @@ import AboutmeSection from "./pages/LandingPage/AboutmeSection";
 import CategSection from "./pages/LandingPage/CategSection";
 import PaintsSections from "./pages/LandingPage/PaintsSections";
 import EventsSection from "./pages/LandingPage/EventsSection";
+import ThanksSection from "./pages/LandingPage/ThanksSection";
+import Footer from "./pages/LandingPage/Footer";
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
         <AboutmeSection />
         <CategSection />
         <PaintsSections />
-        {/* <EventsSection /> */}
+        <ThanksSection />
+        <Footer />
+
         {/* <Container className="container">
           <div style={{ padding: "20px" }}>
             <h1>Custom MUI Theme Example</h1>
