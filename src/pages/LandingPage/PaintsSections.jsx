@@ -1,6 +1,10 @@
 import { Box, Stack, Typography } from "@mui/material";
 import theme from "../../theme";
 
+import event1 from "../../assets/events/event1.png";
+import event2 from "../../assets/events/event2.png";
+import event3 from "../../assets/events/event3.png";
+
 import paint1 from "../../assets/paints/paint1.png";
 import paint2 from "../../assets/paints/paint2.png";
 import paint3 from "../../assets/paints/paint3.png";
@@ -11,6 +15,7 @@ import paint7 from "../../assets/paints/paint7.png";
 import paint8 from "../../assets/paints/paint8.png";
 import paint9 from "../../assets/paints/paint9.png";
 import paint10 from "../../assets/paints/paint10.png";
+import EventCard from "../../components/common/EventCard";
 
 function PaintsSections() {
   const images = [
@@ -51,7 +56,7 @@ function PaintsSections() {
             height: "50%",
             position: "absolute",
 
-            padding: { sm: "100px", xs: 0, md: "150px" },
+            padding: { sm: "100px", xs: "50px 0 0 0 ", md: "150px" },
             zIndex: "3",
           }}
         >
@@ -134,7 +139,6 @@ function PaintsSections() {
             height: "50%",
             position: "absolute",
             top: "1000px",
-            border: "1px solid red",
           }}
           alignItems={"center"}
           justifyContent={"center"}
@@ -149,27 +153,17 @@ function PaintsSections() {
             direction={{ xs: "column", md: "column", sm: "column", lg: "row" }}
             gap={"100px"}
           >
-            <Box
-              sx={{
-                width: "300px",
-                height: "400px",
-                backgroundColor: theme.palette.fourth.main,
-              }}
-            ></Box>
-            <Box
-              sx={{
-                width: "300px",
-                height: "400px",
-                backgroundColor: theme.palette.fourth.main,
-              }}
-            ></Box>
-            <Box
-              sx={{
-                width: "300px",
-                height: "400px",
-                backgroundColor: theme.palette.fourth.main,
-              }}
-            ></Box>
+            <EventCard
+              date={"2019"}
+              title={"Canvas & Coffee Morning"}
+              img={event1}
+            />
+            <EventCard
+              date={"2023"}
+              title={"Art in the Park Festival"}
+              img={event2}
+            />
+            <EventCard date={"2024"} title={"France paints"} img={event3} />
           </Stack>
         </Stack>
       </Box>
