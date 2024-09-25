@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 .container {
   /* max-width: 1280px; */
   margin: 0 auto;
@@ -22,7 +26,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: inherit;
   text-decoration: inherit;
 }
 a:hover {
