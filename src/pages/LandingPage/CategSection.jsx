@@ -1,27 +1,128 @@
-import { Box, Stack } from "@mui/material";
+import React, { useState } from "react";
+
+import { Box, Stack, Typography } from "@mui/material";
+import theme from "../../theme";
 
 import eye from "../../assets/eye.png";
-import Acrylic from "../../assets/Acrylic.jpg";
-import digital from "../../assets/digital.jpeg";
-import oil from "../../assets/oil.jpg";
+import Acrylic from "../../assets/back/AcrylicArt-back.jpg";
+import digital from "../../assets/back/DigitalArt-back.jpg";
+import oil from "../../assets/back/OilPainting-back.png";
 
 import CategCard from "../../components/common/CategCard";
 import { useNavigate } from "react-router-dom";
 
+import { motion, AnimatePresence } from "framer-motion";
+
+const categories = [
+  { id: 1, name: "Digital Art", image: digital },
+  { id: 2, name: "Oil Painting", image: oil },
+  { id: 3, name: "Acrylic Art", image: Acrylic },
+];
+
 function CategSection() {
+  const [backgroundImage, setBackgroundImage] = useState(null);
+
   const navigate = useNavigate();
-  const categories = [
-    { id: 1, name: "Digital Art", description: "Oil-based paints..." },
-    { id: 2, name: "Oil Painting", description: "Water-based paints..." },
-    { id: 3, name: "Acrylic Art", description: "Fast-drying paints..." },
-  ];
   const handleCategoryClick = (category) => {
     navigate("/gallery", { state: { category } });
   };
 
   return (
     <Stack>
-      <Stack
+      <Box
+        sx={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          overflow: "hidden",
+        }}
+      >
+        {/* Background image */}
+        <AnimatePresence>
+          {backgroundImage && (
+            <motion.div
+              key={backgroundImage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                zIndex: 1,
+              }}
+            />
+          )}
+        </AnimatePresence>
+
+        {/* Overlay content */}
+        <Stack
+          direction={{ xs: "column", sm: "column", md: "row" }}
+          justifyContent="center"
+          alignItems="center"
+          spacing={3}
+          sx={{ position: "relative", zIndex: 2, height: "100%" }}
+        >
+          {categories.map((category, index) => (
+            <motion.div
+              onClick={() => handleCategoryClick(categories[index])}
+              key={category.id}
+              whileHover={{
+                scale: 1.05,
+                transition: { duration: 0.3 },
+              }}
+              onHoverStart={() => setBackgroundImage(category.image)}
+              onHoverEnd={() => setBackgroundImage(null)}
+            >
+              <Box
+                sx={{
+                  width: 200,
+                  height: 200,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "rgba(255, 255, 255, 0.8)",
+                  borderRadius: "50%",
+                  boxShadow: 3,
+                  cursor: "pointer",
+                  transition: "background-color 0.3s",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    ...theme.typography.kalam,
+                    color: theme.palette.primary.main,
+                    fontSize: "25px",
+                  }}
+                >
+                  {category.name}
+                </Typography>
+              </Box>
+            </motion.div>
+          ))}
+        </Stack>
+
+        {/* Optional dark overlay for better text visibility */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            // backgroundColor: "rgba(0, 0, 0, 0.4)",
+            zIndex: 1,
+          }}
+        />
+      </Box>
+      {/* <Stack
         width={"100%"}
         height={{ xs: "1000px", md: "100vh" }}
         minHeight={"700px"}
@@ -72,7 +173,7 @@ function CategSection() {
             <CategCard title={"Acrylic Art"} src={Acrylic} />
           </Box>
         </Stack>
-      </Stack>
+      </Stack> */}
     </Stack>
   );
 }
