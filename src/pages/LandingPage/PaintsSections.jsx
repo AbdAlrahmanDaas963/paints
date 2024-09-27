@@ -1,4 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material";
+
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
 import theme from "../../theme";
 
 import event1 from "../../assets/events/event1.png";
@@ -18,6 +22,9 @@ import paint10 from "../../assets/paints/paint10.png";
 import EventCard from "../../components/common/EventCard";
 
 function PaintsSections() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { triggerOnce: true, threshold: 0.1 });
+
   const images = [
     paint1,
     paint2,
@@ -30,6 +37,17 @@ function PaintsSections() {
     paint9,
     paint10,
   ];
+
+  const events = [
+    { img: event1, title: "Canvas & Coffee Morning", date: "2019" },
+    { img: event2, title: "Art in the Park Festival", date: "2023" },
+    { img: event3, title: "France paints", date: "2024" },
+  ];
+
+  const fadeVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
     <Stack
@@ -152,18 +170,26 @@ function PaintsSections() {
             sx={{ zIndex: "1" }}
             direction={{ xs: "column", md: "column", sm: "column", lg: "row" }}
             gap={"100px"}
+            ref={ref}
           >
-            <EventCard
-              date={"2019"}
-              title={"Canvas & Coffee Morning"}
-              img={event1}
-            />
-            <EventCard
-              date={"2023"}
-              title={"Art in the Park Festival"}
-              img={event2}
-            />
-            <EventCard date={"2024"} title={"France paints"} img={event3} />
+            {events.map((event, index) => (
+              <motion.div
+                key={index}
+                variants={fadeVariant}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.2,
+                }}
+              >
+                <EventCard
+                  date={event.date}
+                  title={event.title}
+                  img={event.img}
+                />
+              </motion.div>
+            ))}
           </Stack>
         </Stack>
       </Box>

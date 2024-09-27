@@ -13,13 +13,13 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
 import PaletteIcon from "@mui/icons-material/Palette";
-import { useTheme } from "@mui/material/styles"; // Import useTheme hook to access the theme
+import { useTheme } from "@mui/material/styles";
 
 const pages = ["Home", "About", "Events", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
-  const theme = useTheme(); // Access the theme object
+  const theme = useTheme();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -58,7 +58,7 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: theme.palette.fith.main, // Use theme secondary color for the text
+              color: theme.palette.fith.main,
               textDecoration: "none",
               ...theme.typography.kalam,
             }}
@@ -73,7 +73,7 @@ function ResponsiveAppBar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              sx={{ color: theme.palette.secondary.main }} // Menu icon color
+              sx={{ color: theme.palette.secondary.main }}
             >
               <MenuIcon />
             </IconButton>
@@ -91,7 +91,9 @@ function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" } }}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
@@ -123,7 +125,7 @@ function ResponsiveAppBar() {
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
-              color: theme.palette.fith.main, // Theme secondary color for the text
+              color: theme.palette.fith.main,
               textDecoration: "none",
               ...theme.typography.kalam,
             }}
@@ -146,7 +148,7 @@ function ResponsiveAppBar() {
                   bgcolor: theme.palette.fourth.main,
                   display: "block",
                   color: theme.palette.primary.main,
-                }} // Use theme primary color for button background
+                }}
               >
                 {page}
               </Button>
