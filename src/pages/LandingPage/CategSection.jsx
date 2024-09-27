@@ -37,7 +37,6 @@ function CategSection() {
           overflow: "hidden",
         }}
       >
-        {/* Background image */}
         <AnimatePresence>
           {backgroundImage && (
             <motion.div
@@ -61,7 +60,6 @@ function CategSection() {
           )}
         </AnimatePresence>
 
-        {/* Overlay content */}
         <Stack
           direction={{ xs: "column", sm: "column", md: "row" }}
           justifyContent="center"
@@ -109,7 +107,6 @@ function CategSection() {
           ))}
         </Stack>
 
-        {/* Optional dark overlay for better text visibility */}
         <Box
           sx={{
             position: "absolute",
