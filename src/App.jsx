@@ -13,12 +13,14 @@ import EventsSection from "./pages/LandingPage/EventsSection";
 import ThanksSection from "./pages/LandingPage/ThanksSection";
 import Footer from "./pages/LandingPage/Footer";
 import AdsSection from "./pages2/AdsSection";
+import DevDimensions from "./development/DevDimensions ";
 
 function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <DevDimensions />
 
         <Header />
         <WelcomeSection />
