@@ -19,8 +19,20 @@ const theme = createTheme({
     fith: {
       main: "#E63946",
     },
+    white: {
+      main: "#F8F7F3",
+    },
+    black: {
+      main: "#020202",
+    },
+    orange: {
+      main: "#FDB143",
+    },
   },
   typography: {
+    allVariants: {
+      color: "#020202",
+    },
     kalam: {
       fontFamily: '"Kalam", cursive',
     },
@@ -31,15 +43,6 @@ const theme = createTheme({
       fontFamily: '"Katibeh", serif',
     },
   },
-  // components: {
-  //   MuiButton: {
-  //     styleOverrides: {
-  //       root: {
-  //         fontFamily: '"Katibeh", serif', // Set the global font family for all MUI Buttons
-  //       },
-  //     },
-  //   },
-  // },
 });
 
 export default theme;

@@ -5,26 +5,29 @@ import { ThemeProvider, CssBaseline } from "@mui/material";
 import theme from "./theme";
 
 import Header from "./components/Header";
-import WelcomeSection from "./pages/LandingPage/WelcomeSection";
+import WelcomeSection from "./pages2/WelcomeSection";
 import AboutmeSection from "./pages/LandingPage/AboutmeSection";
 import CategSection from "./pages/LandingPage/CategSection";
 import PaintsSections from "./pages/LandingPage/PaintsSections";
 import EventsSection from "./pages/LandingPage/EventsSection";
 import ThanksSection from "./pages/LandingPage/ThanksSection";
 import Footer from "./pages/LandingPage/Footer";
+import AdsSection from "./pages2/AdsSection";
 
 function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+
         <Header />
         <WelcomeSection />
-        <AboutmeSection />
+        <AdsSection />
+        {/* <AboutmeSection />
         <CategSection />
         <PaintsSections />
         <ThanksSection />
-        <Footer />
+        <Footer /> */}
 
         {/* <Container className="container">
           <div style={{ padding: "20px" }}>

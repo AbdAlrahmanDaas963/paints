@@ -40,7 +40,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: theme.palette.fourth.main }}>
+    <AppBar position="fixed" sx={{ bgcolor: theme.palette.white.main }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <PaletteIcon
