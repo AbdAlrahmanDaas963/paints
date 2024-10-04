@@ -14,23 +14,23 @@ import ThanksSection from "./pages/LandingPage/ThanksSection";
 import Footer from "./pages/LandingPage/Footer";
 import AdsSection from "./pages2/AdsSection";
 import DevDimensions from "./development/DevDimensions ";
+import TagsSection from "./pages2/TagsSection";
 
 function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <DevDimensions />
-
+        <DevDimensions /> {/*  HIDE AFTER DEVELOPMENT  */}
         <Header />
         <WelcomeSection />
         <AdsSection />
+        <TagsSection />
         {/* <AboutmeSection />
         <CategSection />
         <PaintsSections />
         <ThanksSection />
         <Footer /> */}
-
         {/* <Container className="container">
           <div style={{ padding: "20px" }}>
             <h1>Custom MUI Theme Example</h1>

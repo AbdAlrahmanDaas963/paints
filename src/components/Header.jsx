@@ -7,73 +7,69 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
 import PaletteIcon from "@mui/icons-material/Palette";
 import { useTheme } from "@mui/material/styles";
 
 const pages = ["Home", "About", "Events", "Contact"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const theme = useTheme();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
     <AppBar position="fixed" sx={{ bgcolor: theme.palette.white.main }}>
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{
+          position: "relative",
+        }}
+      >
         <Toolbar disableGutters>
-          <PaletteIcon
-            htmlColor={theme.palette.fith.main}
-            sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-          />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: theme.palette.fith.main,
-              textDecoration: "none",
-              ...theme.typography.kalam,
+              flexGrow: 1,
+              display: { xs: "flex", md: "flex" },
+              gap: "2px",
+              justifyContent: { xs: "flex-start", md: "flex-start" },
+              order: { xs: 1, md: 1 },
             }}
           >
-            Paint
-          </Typography>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{
+                  my: 2,
+                  display: { xs: "none", md: "block" },
+                  color: theme.palette.black.main,
+                }}
+              >
+                {page}
+              </Button>
+            ))}
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="open navigation"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              sx={{ color: theme.palette.secondary.main }}
+              sx={{
+                color: theme.palette.black.main,
+                display: { xs: "block", md: "none" },
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -109,86 +105,64 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <PaletteIcon
-            htmlColor={theme.palette.fith.main}
-            sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-          />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: theme.palette.fith.main,
-              textDecoration: "none",
-              ...theme.typography.kalam,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "absolute",
+              left: "50%",
+              transform: "translateX(-50%)",
+              order: { xs: 2, md: 2 },
             }}
           >
-            Paint
-          </Typography>
+            <PaletteIcon
+              htmlColor={theme.palette.orange.main}
+              sx={{ display: "flex", mr: 1 }}
+            />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: theme.palette.orange.main,
+                textDecoration: "none",
+                ...theme.typography.kalam,
+                fontSize: "25px",
+              }}
+            >
+              Paint
+            </Typography>
+          </Box>
+
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              gap: "2px",
+              display: "flex",
+              justifyContent: "flex-end",
+              order: { xs: 3, md: 3 },
             }}
           >
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  bgcolor: theme.palette.fourth.main,
-                  display: "block",
-                  color: theme.palette.primary.main,
-                }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
+            <Typography
+              variant="body1"
+              sx={{
+                color: theme.palette.black.main,
+                cursor: "pointer",
+                alignSelf: "center",
+                marginRight: "16px",
+                textDecoration: "underline",
               }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
+              onClick={() => {
+                console.log("Translation Button Clicked");
               }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography
-                    sx={{
-                      textAlign: "center",
-                      color: theme.palette.text.primary,
-                    }}
-                  >
-                    {setting}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+              العربية
+            </Typography>
           </Box>
         </Toolbar>
       </Container>

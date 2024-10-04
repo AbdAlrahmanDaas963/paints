@@ -8,10 +8,15 @@ function AdsSection() {
       alignItems={"center"}
       justifyContent={"center"}
       width={"100%"}
-      height={"90vh"}
+      height={"fit-content"}
       sx={{
-        padding: { lg: "0 200px", md: "", sm: "", xs: "" },
-        border: "1px dotted grey",
+        padding: {
+          lg: "0 150px",
+          md: "0 100px",
+          sm: "50px 30px",
+          xs: "50px 15px",
+        },
+        // border: "1px dotted grey",
         backgroundColor: theme.palette.white.main,
         overflowX: "hidden",
       }}
@@ -24,7 +29,9 @@ function AdsSection() {
           borderRadius: "50px",
           backgroundColor: "#fff",
         }}
-      ></Box>
+      >
+        ADs
+      </Box>
     </Stack>
   );
 }
